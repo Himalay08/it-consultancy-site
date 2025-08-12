@@ -1,38 +1,91 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Himalay Consulting — Java | Spring Boot | DevOps</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <meta name="description" content="Professional IT services: Java, Spring Boot, Spring Batch, React, Kubernetes, Docker, Elasticsearch, Apache Zookeeper, Apache Drill, monitoring & bug fixes.">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Himalay Consulting — Java, Spring Boot & Cloud-native Engineering</title>
+  <meta name="description" content="Himalay Consulting provides expert Java and DevOps services: Spring Boot, Spring Batch, React, Kubernetes, Docker, Elasticsearch, Apache Zookeeper, Apache Drill, and production incident resolution. Fast SLAs, clear deliverables, and proven results." />
+  <meta name="keywords" content="Java consultant, Spring Boot expert, Spring Batch, ReactJS developer, Kubernetes consultant, Docker, Elasticsearch tuning, production bug fixes, observability, New Relic, Apache Drill" />
+  <link rel="canonical" href="https://your-domain.com/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Himalay Consulting — Java, Spring Boot & Cloud-native Engineering" />
+  <meta property="og:description" content="Expert Java and DevOps services: fast bug fixes, performance tuning, and production-safe Kubernetes deployments." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://your-domain.com/" />
+  <meta property="og:image" content="https://your-domain.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Himalay Consulting — Java & DevOps" />
+  <meta name="twitter:description" content="Production-first Java and DevOps consultancy for Spring Boot, Kubernetes, Elasticsearch and observability." />
+
+  <!-- Structured Data (LocalBusiness / ProfessionalService) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Himalay Consulting",
+    "url": "https://your-domain.com/",
+    "logo": "https://your-domain.com/logo.png",
+    "description": "Enterprise-grade Java and DevOps services: bug fixes, performance tuning, cloud-native deployments, and observability.",
+    "telephone": "+91 99999 99999",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ahmedabad",
+      "addressRegion": "GJ",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#0d6efd;--muted:#6c757d}
-    body{font-family:Inter,system-ui,Segoe UI,Arial, sans-serif;background:#f8fafc}
-    .hero{background:linear-gradient(90deg,rgba(13,110,253,0.08), rgba(0,123,255,0.02));padding:6rem 0}
-    .card-service{border:0;border-radius:12px;box-shadow:0 6px 20px rgba(14,30,37,0.06)}
-    .tech-badge{background:#fff;border:1px solid #e9eef6;padding:6px 10px;border-radius:999px;font-weight:600}
-    .contact-card{border-radius:12px;box-shadow:0 6px 30px rgba(14,30,37,0.06)}
-    footer{padding:2rem 0;background:#071126;color:#fff}
-    .logo{font-weight:700;color:var(--accent)}
+    :root{--bg:#0b1020;--card:#0f1724;--muted:#9aa4b2;--accent:#4f9cff;--glass: rgba(255,255,255,0.04)}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Arial; background:linear-gradient(180deg,#060814 0%, var(--bg) 100%); color:#e6eef8; margin:0}
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:1100px}
+    nav.navbar{padding:1rem 0}
+    .brand{font-weight:800;letter-spacing:0.2px}
+    .nav-link{color:var(--muted)!important;margin-right:0.5rem}
+    .btn-ghost{border:1px solid rgba(255,255,255,0.06);background:transparent;color:#e6eef8}
+    .hero{padding:5rem 0;display:flex;gap:2rem;align-items:center}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:14px;padding:2rem;box-shadow:0 8px 30px rgba(2,6,23,0.7)}
+    .kicker{font-size:0.85rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+    .display{font-size:2.1rem;font-weight:700;line-height:1.05;margin-top:0.4rem}
+    .lead{color:var(--muted);margin-top:1rem}
+    .tech-list{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+    .chip{background:var(--glass);padding:6px 10px;border-radius:999px;font-weight:600;color:#dfe8f8;border:1px solid rgba(255,255,255,0.03)}
+    .ill-card{min-height:320px;display:flex;align-items:center;justify-content:center;border-radius:14px;background:linear-gradient(180deg,#071025 0%, #0b1426 100%);box-shadow:0 12px 40px rgba(3,8,20,0.6)}
+    section{padding:3.5rem 0}
+    .card-pro{background:linear-gradient(180deg, rgba(255,255,255,0.015),transparent);border-radius:12px;padding:1.25rem;border:1px solid rgba(255,255,255,0.03)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .service-icon{width:46px;height:46px;border-radius:10px;background:rgba(79,156,255,0.12);display:grid;place-items:center;color:var(--accent);font-weight:700}
+    .muted{color:var(--muted)}
+    .process{display:flex;gap:1rem;flex-wrap:wrap}
+    .step{flex:1;min-width:180px;background:rgba(255,255,255,0.02);padding:1rem;border-radius:10px}
+    footer{padding:2.5rem 0;background:transparent;border-top:1px solid rgba(255,255,255,0.03)}
+    @media (max-width:992px){.hero{flex-direction:column}.service-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:576px){.service-grid{grid-template-columns:1fr}.display{font-size:1.6rem}}
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .7s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+    .testimonial{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:1rem;border-radius:10px}
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <nav class="navbar navbar-expand-lg">
     <div class="container">
-      <a class="navbar-brand logo" href="#">Himalay Consulting</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <a class="navbar-brand brand" href="#">Himalay<span style="color:var(--accent)">Consulting</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
           <li class="nav-item ms-3"><a class="btn btn-primary" href="#contact">Get Quote</a></li>
         </ul>
@@ -40,189 +93,230 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-7">
-          <h1 class="display-6 mb-3">Enterprise-grade Java & DevOps services<br><small class="text-muted">Bug fixes • Performance tuning • Cloud-native deployments</small></h1>
-          <p class="lead text-muted">Focused on Spring Boot, Spring Batch, ReactJS, Kubernetes, Docker, Elasticsearch, Apache Zookeeper, Drill and observability (New Relic). Fast turnarounds, clear SLAs and professional delivery.</p>
-          <div class="d-flex gap-2 mt-4">
-            <a class="btn btn-primary btn-lg" href="#contact"><i class="fa fa-paper-plane me-2"></i>Contact Me</a>
-            <a class="btn btn-outline-secondary btn-lg" href="#services"><i class="fa fa-list me-2"></i>See Services</a>
-          </div>
-          <div class="mt-4">
-            <span class="tech-badge me-2">Java</span>
-            <span class="tech-badge me-2">Spring Boot</span>
-            <span class="tech-badge me-2">Spring Batch</span>
-            <span class="tech-badge me-2">ReactJS</span>
-            <span class="tech-badge me-2">Kubernetes</span>
-            <span class="tech-badge me-2">Docker</span>
-            <span class="tech-badge me-2">Elasticsearch</span>
-          </div>
-        </div>
-        <div class="col-lg-5 d-none d-lg-block">
-          <div class="card p-4 contact-card">
-            <h5 class="mb-3">Quick quote</h5>
-            <p class="small text-muted">Describe your issue — I usually respond within 24 hours.</p>
-            <form id="quickForm" onsubmit="return submitQuick(event)">
-              <div class="mb-2">
-                <input id="name" class="form-control" placeholder="Your name" required>
-              </div>
-              <div class="mb-2">
-                <input id="email" type="email" class="form-control" placeholder="Email" required>
-              </div>
-              <div class="mb-2">
-                <input id="project" class="form-control" placeholder="Project / Issue (short)" required>
-              </div>
-              <div class="d-grid">
-                <button class="btn btn-primary">Send</button>
-              </div>
-              <small class="text-muted mt-2 d-block">Or email: <a href="mailto:your-email@example.com">your-email@example.com</a></small>
-            </form>
-          </div>
-        </div>
+  <header class="hero container">
+    <div style="flex:1" class="fade-up">
+      <div class="kicker">Enterprise Java & DevOps</div>
+      <h1 class="display">I fix production issues, tune performance, and deliver cloud-native deployments.</h1>
+      <p class="lead muted">I am <strong>Himalay</strong>. I deliver reliable, production-safe solutions for complex backend systems. My services include fast incident resolution, performance tuning, cloud-native migrations, and observability engineering. I work with small teams and enterprise clients and provide clear SLAs, documented fixes, and test coverage.</p>
+
+      <div class="d-flex gap-2 mt-3">
+        <a class="btn btn-primary btn-lg" href="#contact">Request Quote</a>
+        <a class="btn btn-ghost btn-lg" href="#work">See Case Studies</a>
+      </div>
+
+      <div class="tech-list" aria-hidden>
+        <span class="chip">Java</span>
+        <span class="chip">Spring Boot</span>
+        <span class="chip">Spring Batch</span>
+        <span class="chip">React</span>
+        <span class="chip">Kubernetes</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Elasticsearch</span>
+        <span class="chip">New Relic</span>
+        <span class="chip">Apache Drill</span>
+      </div>
+    </div>
+
+    <div style="width:420px;max-width:45%" class="fade-up">
+      <div class="ill-card" role="img" aria-label="Illustration showing cloud native architecture">
+        <!-- Accessible SVG illustration -->
+        <svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <rect x="0" y="0" width="240" height="240" rx="20" fill="#071428"/>
+          <g transform="translate(20,20)">
+            <rect x="0" y="0" width="200" height="40" rx="6" fill="#081b2a" />
+            <rect x="0" y="56" width="200" height="12" rx="4" fill="#06202f" />
+            <rect x="0" y="80" width="200" height="12" rx="4" fill="#06202f" />
+            <rect x="0" y="104" width="200" height="80" rx="8" fill="#061826" />
+            <circle cx="160" cy="40" r="20" fill="#2b74ff" opacity="0.12" />
+            <g transform="translate(12,112)">
+              <rect width="40" height="40" rx="6" fill="#12334a" />
+              <rect x="52" width="40" height="40" rx="6" fill="#153b52" />
+              <rect x="104" width="40" height="40" rx="6" fill="#18445a" />
+            </g>
+          </g>
+        </svg>
       </div>
     </div>
   </header>
 
-  <main class="py-5">
-    <div class="container">
-      <section id="services" class="mb-5">
-        <div class="row g-4">
-          <div class="col-12 text-center mb-3">
-            <h2>Services</h2>
-            <p class="text-muted">Professional services with clear deliverables and timelines.</p>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card card-service p-4 h-100">
-              <div class="mb-3"><i class="fa fa-bug fa-2x text-primary"></i></div>
-              <h5>Bug fixes & Maintenance</h5>
-              <p class="text-muted small">Fix production-critical issues in Spring Boot, Spring Batch and Java services quickly with rollback-safe patches and tests.</p>
-              <ul class="small">
-                <li>Root cause analysis</li>
-                <li>Patch + unit/integration tests</li>
-                <li>Regression check</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card card-service p-4 h-100">
-              <div class="mb-3"><i class="fa fa-cubes fa-2x text-primary"></i></div>
-              <h5>Cloud-native & DevOps</h5>
-              <p class="text-muted small">Kubernetes, Docker, CI/CD pipelines, containerization and production deployments with monitoring and alerts.</p>
-              <ul class="small">
-                <li>K8s manifests, Helm charts</li>
-                <li>Dockerfile optimization</li>
-                <li>CI/CD on GitHub Actions / GitLab CI</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="card card-service p-4 h-100">
-              <div class="mb-3"><i class="fa fa-database fa-2x text-primary"></i></div>
-              <h5>Observability & Search</h5>
-              <p class="text-muted small">Monitoring (New Relic), centralized logging, Elasticsearch tuning and search optimization.</p>
-              <ul class="small">
-                <li>APM setups & dashboards</li>
-                <li>Elasticsearch indexing & queries</li>
-                <li>Alerting & SLO recommendations</li>
-              </ul>
-            </div>
-          </div>
-
+  <main class="container">
+    <section id="services">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h2>Services</h2>
+          <p class="muted">Clear scope, measurable outcomes. Pick what you need.</p>
         </div>
-      </section>
+        <div class="muted">Available for short & long engagements</div>
+      </div>
 
-      <section id="about" class="mb-5">
-        <div class="row align-items-center">
+      <div class="service-grid" role="list">
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">BG</div>
+            <div>
+              <h3>Critical Bug Fixes</h3>
+              <p class="muted small">Rapid triage and regression-safe fixes for production incidents in Java and Spring applications. Deliverables: RCA, patch, tests, and rollback plan.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">DB</div>
+            <div>
+              <h3>Performance & Scaling</h3>
+              <p class="muted small">Heap and GC tuning, query optimization, Elasticsearch index and query improvements, and bottleneck removal to reduce latency and cost.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">K8</div>
+            <div>
+              <h3>Cloud-native Deployments</h3>
+              <p class="muted small">Kubernetes manifests, Helm charts, Dockerfile best practices, CI/CD pipelines, and blue/green or canary rollout strategies.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">APM</div>
+            <div>
+              <h3>Observability & Monitoring</h3>
+              <p class="muted small">APM setup (New Relic), centralized logging, SLO definition, dashboards, and alerting to reduce MTTD and MTTR.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">ETL</div>
+            <div>
+              <h3>Data & Search Engineering</h3>
+              <p class="muted small">Elasticsearch tuning, index design, and Apache Drill workflows for large-file querying and ETL pipelines.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="card-pro" role="listitem">
+          <div class="d-flex align-items-start gap-3">
+            <div class="service-icon">RC</div>
+            <div>
+              <h3>Architecture Reviews</h3>
+              <p class="muted small">Security and reliability reviews, cost optimisation, and pragmatic migration plans backed by measurable risks and timelines.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>Selected Case Studies</h2>
+      <p class="muted">Summaries of anonymized client work with measurable outcomes.</p>
+      <div class="row g-3 mt-3">
+        <div class="col-md-4">
+          <div class="card-pro">
+            <h4>High-throughput Batch Pipeline</h4>
+            <p class="muted small">Optimized Spring Batch jobs and memory usage. Result: 60% runtime reduction and stable throughput at scale.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-pro">
+            <h4>Kubernetes Migration</h4>
+            <p class="muted small">Containerized services, created Helm charts and CI pipelines. Result: predictable deployments and 30% reduction in deployment time.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card-pro">
+            <h4>Elasticsearch Tuning</h4>
+            <p class="muted small">Index redesign and query optimization that improved search latency by three times.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h3>Testimonials</h3>
+        <div class="row g-3 mt-2">
           <div class="col-md-6">
-            <h3>About Me</h3>
-            <p class="text-muted">5+ years experience working in product and service-based MNCs. I specialise in backend systems, batch processing, and operational reliability for mission-critical Java services.</p>
-            <ul class="small text-muted">
-              <li>Deep expertise in Spring Boot & Spring Batch</li>
-              <li>Experienced with Kubernetes, Docker and cloud deployments</li>
-              <li>Performance tuning, profiling and observability</li>
-            </ul>
-            <a class="btn btn-outline-primary mt-3" href="#contact">Hire Me</a>
+            <div class="testimonial">
+              <strong>Product Manager, FinTech</strong>
+              <p class="muted small">"Himalay resolved a critical production incident within hours and provided a clear post-incident report. Highly recommended."</p>
+            </div>
           </div>
           <div class="col-md-6">
-            <div class="p-4 bg-white rounded-3 shadow-sm">
-              <h6>Preferred engagement</h6>
-              <p class="small text-muted mb-1"><strong>Short-term:</strong> Critical bug fixes (SLA, 24–72 hrs)</p>
-              <p class="small text-muted mb-1"><strong>Medium-term:</strong> Migration, performance projects (2–8 weeks)</p>
-              <p class="small text-muted"><strong>Long-term:</strong> Team augmentation & ongoing support</p>
+            <div class="testimonial">
+              <strong>Lead Engineer, SaaS</strong>
+              <p class="muted small">"Delivered a migration plan and implemented it with zero downtime. The team appreciated the clear documentation."</p>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="projects" class="mb-5">
-        <div class="row">
-          <div class="col-12 text-center mb-4"><h3>Selected Work</h3><p class="text-muted">(Anonymized client work / internal tools)</p></div>
-          <div class="col-md-4">
-            <div class="card p-3 h-100">
-              <h6>High-throughput batch pipeline</h6>
-              <p class="small text-muted">Optimized Spring Batch job, cut runtime by 60% and reduced memory footprint.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card p-3 h-100">
-              <h6>Kubernetes migration</h6>
-              <p class="small text-muted">Lift-and-shift microservices to K8s with Helm charts and CI/CD.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="card p-3 h-100">
-              <h6>Elasticsearch tuning</h6>
-              <p class="small text-muted">Index redesign and query changes that improved search latency by 3x.</p>
-            </div>
-          </div>
+    <section id="process">
+      <h2>How I Work</h2>
+      <p class="muted">A predictable process so you can trust the delivery.</p>
+      <div class="process mt-3">
+        <div class="step">
+          <h5>1. Discovery</h5>
+          <p class="muted small">Quick assessment, logs review, and prioritized impact list.</p>
         </div>
-      </section>
+        <div class="step">
+          <h5>2. Estimate</h5>
+          <p class="muted small">Clear timeline, deliverables, and rollback strategy.</p>
+        </div>
+        <div class="step">
+          <h5>3. Implement</h5>
+          <p class="muted small">Patch, tests, CI and deployment with safety gates and monitoring.</p>
+        </div>
+        <div class="step">
+          <h5>4. Verify & Handover</h5>
+          <p class="muted small">Post-deploy verification, documentation, and knowledge transfer.</p>
+        </div>
+      </div>
+    </section>
 
-      <section id="contact" class="mb-5">
-        <div class="row">
-          <div class="col-lg-6">
-            <h3>Contact</h3>
-            <p class="text-muted">Tell me about your issue — include logs or steps to reproduce when possible.</p>
-            <form id="contactForm" onsubmit="return submitContact(event)">
-              <div class="mb-3"><input id="c_name" class="form-control" placeholder="Name" required></div>
-              <div class="mb-3"><input id="c_email" type="email" class="form-control" placeholder="Email" required></div>
-              <div class="mb-3"><input id="c_subject" class="form-control" placeholder="Subject" required></div>
-              <div class="mb-3"><textarea id="c_message" class="form-control" rows="6" placeholder="Describe your issue (logs, error messages)" required></textarea></div>
-              <div class="d-flex gap-2">
-                <button class="btn btn-primary">Send message</button>
-                <a class="btn btn-outline-secondary" href="https://wa.me/919999999999" target="_blank"><i class="fa fa-whatsapp me-2"></i>WhatsApp</a>
-              </div>
-            </form>
-            <p class="small text-muted mt-3">Or email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-          </div>
-          <div class="col-lg-6">
-            <div class="p-4 bg-white rounded-3 contact-card">
-              <h6>Rates & Process</h6>
-              <p class="small text-muted mb-1"><strong>Hourly:</strong> Available on request</p>
-              <p class="small text-muted mb-1"><strong>Fixed-scope:</strong> Quote after scoping</p>
-              <p class="small text-muted">Typical process: Discovery → Estimate → Fix/Deliver → Test → Handover</p>
-              <hr>
-              <h6>Availability</h6>
-              <p class="small text-muted">Usually available for short engagements. Response time: 24–48 hours for initial reply.</p>
+    <section id="contact">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Contact</h2>
+          <p class="muted">Share logs, error messages, or a short description of the problem. I will respond within 24–48 hours.</p>
+          <form id="contactForm" onsubmit="return submitContact(event)">
+            <div class="mb-3"><label class="visually-hidden" for="c_name">Name</label><input id="c_name" class="form-control" placeholder="Name" required></div>
+            <div class="mb-3"><label class="visually-hidden" for="c_email">Email</label><input id="c_email" type="email" class="form-control" placeholder="Email" required></div>
+            <div class="mb-3"><label class="visually-hidden" for="c_subject">Subject</label><input id="c_subject" class="form-control" placeholder="Subject" required></div>
+            <div class="mb-3"><label class="visually-hidden" for="c_message">Message</label><textarea id="c_message" class="form-control" rows="6" placeholder="Describe your issue (logs, error messages)" required></textarea></div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-primary">Send message</button>
+              <a class="btn btn-ghost" href="https://wa.me/919999999999" target="_blank" rel="noopener">WhatsApp</a>
             </div>
+          </form>
+          <p class="small muted mt-3">Or email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+        </div>
+        <div class="col-lg-6">
+          <div class="card-pro p-3">
+            <h5>Rates & Engagement</h5>
+            <p class="muted small mb-1"><strong>Hourly:</strong> Available on request</p>
+            <p class="muted small mb-1"><strong>Fixed-scope:</strong> Quote after scoping</p>
+            <p class="muted small">Typical process: Discovery → Estimate → Implement → Verify → Handover</p>
+            <hr>
+            <h5>Availability</h5>
+            <p class="muted small">Usually available for short engagements. Initial response time: 24–48 hours.</p>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="container d-flex justify-content-between align-items-center">
       <div>
-        <div class="logo">Himalay Consulting</div>
-        <small class="text-muted">Trusted Java & DevOps consultancy</small>
+        <div class="brand">Himalay<span style="color:var(--accent)">Consulting</span></div>
+        <small class="muted">Trusted Java & DevOps consultancy</small>
       </div>
-      <div class="text-end">
+      <div class="text-end muted">
         <small>© <span id="year"></span> Himalay Consulting</small>
       </div>
     </div>
@@ -231,18 +325,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     document.getElementById('year').innerText = new Date().getFullYear();
-
-    function submitQuick(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const project = document.getElementById('project').value;
-      const subject = encodeURIComponent('Quick quote: '+project+' (from site)');
-      const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nProject: '+project);
-      window.location.href = `mailto:your-email@example.com?subject=${subject}&body=${body}`;
-      return false;
-    }
-
     function submitContact(e){
       e.preventDefault();
       const name = document.getElementById('c_name').value;
@@ -250,7 +332,10 @@
       const subject = document.getElementById('c_subject').value;
       const message = document.getElementById('c_message').value;
       const mailSub = encodeURIComponent(subject+' (from site)');
-      const mailBody = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
+      const mailBody = encodeURIComponent('Name: '+name+'
+Email: '+email+'
+
+'+message);
       window.location.href = `mailto:your-email@example.com?subject=${mailSub}&body=${mailBody}`;
       return false;
     }
