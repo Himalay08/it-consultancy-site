@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,216 +12,7 @@
   <title>LogicLayer — IT Services & Consultancy</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b1220;       /* page background */
-      --surface:#0f1a2b;  /* cards/nav */
-      --muted:#9fb0c3;    /* secondary text */
-      --text:#e9f1ff;     /* primary text */
-      --accent:#00ADB5;   /* teal */
-      --accent-2:#5b9dff; /* blue */
-      --ring: rgba(0,173,181,.35);
-      --radius:16px;
-      --shadow-sm: 0 6px 14px rgba(0,0,0,.25);
-      --shadow: 0 14px 30px rgba(0,0,0,.35);
-      --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
-      --container: 1180px;
-      --t: 250ms;         /* animation timing */
-      --t-fast: 150ms;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:linear-gradient(180deg, #08101d, #0b1220 40%); color:var(--text)}
-    a{color:inherit; text-decoration:none}
-    .container{max-width:var(--container); margin-inline:auto; padding:0 24px}
-
-    /* ====== Navbar (pro) ====== */
-    .nav{position:sticky; top:0; z-index:1000; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient( to bottom, rgba(11,18,32,.92), rgba(11,18,32,.6)); border-bottom:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow-sm)}
-    .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
-    .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px}
-    .logo{width:42px; height:42px; border-radius:12px; position:relative; isolation:isolate; display:grid; place-items:center}
-    .logo::before{content:""; position:absolute; inset:-1px; border-radius:inherit; background:conic-gradient(from 210deg, var(--accent), var(--accent-2)); filter:blur(14px); opacity:.45; z-index:-1}
-    .logo svg{width:22px; height:22px; fill:white; filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
-    .brand span{font-size:18px}
-    .nav-links{display:flex; gap:24px}
-    .nav-links a{color:var(--muted); font-weight:600; position:relative}
-    .nav-links a:hover{color:var(--text)}
-    .nav-links a.active::after{content:""; position:absolute; left:0; right:0; bottom:-10px; height:2px; background:linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius:2px}
-    .nav-cta{display:flex; gap:10px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.03); color:var(--text); border:1px solid rgba(255,255,255,.12); font-weight:700; transition:transform var(--t), box-shadow var(--t), background var(--t), border-color var(--t)}
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.35); border-color:rgba(255,255,255,.2)}
-    .btn-primary{background:linear-gradient(90deg, var(--accent), var(--accent-2)); border:none; box-shadow:0 8px 24px rgba(0,173,181,.35)}
-    .btn-primary:hover{box-shadow:0 16px 36px rgba(0,173,181,.45);}
-
-    /* mobile nav */
-    .menu{display:none}
-    .hamburger{display:none; width:42px; height:42px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text)}
-    @media (max-width:860px){
-      .nav-links,.nav-cta{display:none}
-      .hamburger{display:inline-grid; place-items:center}
-      .menu{display:block; padding:0 24px 16px}
-      .menu a{display:block; padding:12px 0; color:var(--muted); border-bottom:1px solid rgba(255,255,255,.06)}
-      .menu a:last-child{border-bottom:none}
-    }
-
-    /* ====== Hero ====== */
-    .hero{position:relative; overflow:hidden}
-    .hero-wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; padding:92px 0 68px}
-    .kicker{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(0,173,181,.12); color:var(--accent); font-weight:700; letter-spacing:.3px}
-    .title{font-size: clamp(36px, 5vw, 60px); line-height:1.05; margin:14px 0 12px; font-weight:800}
-    .subtitle{color:var(--muted); font-size: clamp(16px, 2.2vw, 20px)}
-    .hero-cta{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-
-    /* Professional card base + hover highlight (glass + glow ring) */
-    .card, .hero-card, .service{position:relative; background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); transition:transform var(--t), box-shadow var(--t), border-color var(--t)}
-    .card::after, .hero-card::after, .service::after{content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; background:linear-gradient(120deg, transparent, rgba(0,173,181,.35), rgba(91,157,255,.35), transparent); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity var(--t-fast)}
-    .card:hover, .hero-card:hover, .service:hover{transform:translateY(-8px); box-shadow:var(--shadow-lg); border-color:rgba(255,255,255,.18)}
-    .card:hover::after, .hero-card:hover::after, .service:hover::after{opacity:1}
-
-    .metric{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:16px}
-    .metric .pill{background:rgba(255,255,255,.04); padding:12px; border-radius:12px; text-align:center; transition:transform var(--t)}
-    .metric .pill:hover{transform:translateY(-4px)}
-    .metric .big{font-size:22px; font-weight:800}
-
-    /* Increased spacing for quick contact card */
-    .hero-contact{display:flex; flex-direction:column; gap:14px}
-    .hero-contact .btn{justify-content:center}
-
-    .blob{position:absolute; right:-120px; top:-120px; width:460px; height:460px; background:radial-gradient(closest-side, rgba(0,173,181,.35), transparent 70%); filter:blur(26px);}
-    @media (max-width:980px){.hero-wrap{grid-template-columns:1fr}}
-
-    /* ====== Sections ====== */
-    section{padding:72px 0}
-    .section-title{font-size:clamp(22px,3vw,32px); margin:0 0 14px}
-    .section-sub{color:var(--muted); margin-bottom:28px}
-
-    /* About */
-    .about{display:grid; grid-template-columns:1.1fr .9fr; gap:28px}
-    .profile{display:flex; gap:16px; align-items:center}
-    .avatar{width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:800}
-    @media (max-width:980px){.about{grid-template-columns:1fr}}
-
-    /* Services grid */
-    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
-    @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
-    @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:520px){.grid{grid-template-columns:1fr}}
-    .service .icon{width:44px; height:44px; border-radius:10px; display:grid; place-items:center; margin-bottom:12px; background:linear-gradient(135deg, rgba(0,173,181,.25), rgba(91,157,255,.25)); border:1px solid rgba(255,255,255,.08); transition:transform var(--t)}
-    .service:hover .icon{transform:scale(1.05)}
-    .service h3{margin:6px 0 6px; font-size:18px}
-    .service p{color:var(--muted); font-size:14px}
-
-    /* Tech badges */
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
-    .badge{padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); font-size:12px; color:var(--muted); transition:transform var(--t)}
-    .badge:hover{transform:translateY(-3px)}
-
-    /* Portfolio */
-    .portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    @media (max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:560px){.portfolio-grid{grid-template-columns:1fr}}
-    .thumb{position:relative; aspect-ratio:16/10; border-radius:14px; overflow:hidden; cursor:pointer; border:1px solid rgba(255,255,255,.08); transition:transform var(--t), box-shadow var(--t)}
-    .thumb img{width:100%; height:100%; object-fit:cover; filter:saturate(105%); transition:transform var(--t)}
-    .thumb:hover{transform:translateY(-6px); box-shadow:var(--shadow)}
-    .thumb:hover img{transform:scale(1.04)}
-    .thumb::after{content:"View"; position:absolute; inset:auto 10px 10px auto; background:rgba(0,0,0,.55); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px}
-
-    /* Modal */
-    .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; padding:24px}
-    .modal.open{display:flex}
-    .modal-card{background:var(--surface); border:1px solid rgba(255,255,255,.1); border-radius:18px; max-width:920px; width:100%; box-shadow:var(--shadow); overflow:hidden}
-    .modal-media{aspect-ratio:16/9; background:#000}
-    .modal-body{padding:18px 18px 22px}
-    .modal-close{position:absolute; top:14px; right:14px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); color:#fff; width:40px; height:40px; border-radius:10px}
-
-    /* Contact */
-    .contact{display:grid; grid-template-columns:1fr 1fr; gap:22px}
-    @media (max-width:900px){.contact{grid-template-columns:1fr}}
-    .field{display:flex; flex-direction:column; gap:8px; margin-bottom:14px}
-    .input, textarea{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:12px; padding:12px 14px; outline:none; transition:box-shadow var(--t), border-color var(--t)}
-    .input:focus, textarea:focus{box-shadow:0 0 0 4px var(--ring); border-color:var(--accent)}
-    textarea{min-height:120px; resize:vertical}
-
-    /* Footer */
-    footer{padding:44px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
-    .muted{color:var(--muted)}
-
-    /* Simple reveal animations */
-    .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
-    .reveal.show{opacity:1; transform:none}
-
-    /* Accessibility */
-    :focus-visible{outline:3px solid var(--accent-2); outline-offset:2px}
-    @media (prefers-reduced-motion: reduce){
-      *{transition:none !important; animation:none !important}
-    }
-
-
-/*     ------------------------------------ */
-.hero-card {
-    background-color: #0b1220;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 40px; /* Overlap fix */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative; /* important for z-index */
-    z-index: 10; /* keep above other elements */
-}
-
-/* Hover highlight */
-.hero-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-}
-
-.metric {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-/* Original pill background + hover */
-.pill {
-    background-color: #0b1220; /* exact solid dark brown-grey from screenshot */
-    border-radius: 8px;
-    padding: 8px 12px;
-    flex: 1 1 calc(33% - 10px);
-    min-width: 120px;
-    transition: background-color 0.3s ease;
-}
-
-.pill:hover {
-    background-color: #383838; /* slightly lighter on hover */
-}
-
-
-.big {
-    font-size: 18px;
-    font-weight: bold;
-    color: #00aaff;
-}
-
-.muted {
-    font-size: 14px;
-    color: #aaa;
-}
-
-/* Mobile fix */
-@media (max-width: 600px) {
-    .pill {
-        flex: 1 1 100%;
-    }
-}
-
-footer {
-    padding-top: 40px;
-}
-
-
-
-    
-  </style>
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <!-- ======= NAV ======= -->
@@ -272,7 +64,7 @@ footer {
         <div class="hero-card">
           <div class="metric">
             <div class="pill"><div class="big">Enterprise</div><div class="muted">Project Support</div></div>
-            <div class="pill"><div class="big">Java • Cloud</div><div class="muted">Deep Expertise</div></div>
+            <div class="pill"><div class="big">Java  Cloud</div><div class="muted">Deep Expertise</div></div>
             <div class="pill"><div class="big">SLA</div><div class="muted">Reliable Delivery</div></div>
           </div>
         </div>
@@ -283,7 +75,7 @@ footer {
         <div class="hero-contact" style="margin-top:16px">
           <a class="btn" href="tel:+918200808935">📞 +91‑8200808935</a>
           <a class="btn" href="https://wa.me/918200808935" target="_blank">💬 WhatsApp</a>
-          <a class="btn" href="mailto:contact@logiclayer.com">✉️ contact@logiclayer.com</a>
+          <a class="btn" href="mailto:logiclayer@gmail.com">✉️ logiclayer@gmail.com</a>
         </div>
       </div>
     </div>
