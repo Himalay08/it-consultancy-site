@@ -154,6 +154,62 @@
     @media (prefers-reduced-motion: reduce){
       *{transition:none !important; animation:none !important}
     }
+
+
+/*     ------------------------------------ */
+.hero-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px; /* Overlap fix */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover highlight */
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+.metric {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.pill {
+    background-color: #222;
+    border-radius: 8px;
+    padding: 8px 12px;
+    flex: 1 1 calc(33% - 10px);
+    min-width: 120px;
+    transition: background-color 0.3s ease;
+}
+
+.pill:hover {
+    background-color: #2a2a2a;
+}
+
+.big {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00aaff;
+}
+
+.muted {
+    font-size: 14px;
+    color: #aaa;
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+    .pill {
+        flex: 1 1 100%;
+    }
+}
+
+    
   </style>
 </head>
 <body>
