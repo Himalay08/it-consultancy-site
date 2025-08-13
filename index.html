@@ -161,7 +161,7 @@
     background-color: #1e1e1e;
     border-radius: 12px;
     padding: 20px;
-    margin-top: 40px; /* overlap fix — thoda zyada spacing */
+    margin-top: 40px; /* Overlap fix */
     box-shadow: 0 4px 12px rgba(0,0,0,0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -178,8 +178,9 @@
     gap: 10px;
 }
 
+/* Original pill background + hover */
 .pill {
-    background-color: #222;
+    background-color: rgba(68, 68, 68, 0.6); /* original brown-grey tone */
     border-radius: 8px;
     padding: 8px 12px;
     flex: 1 1 calc(33% - 10px);
@@ -188,7 +189,7 @@
 }
 
 .pill:hover {
-    background-color: #2a2a2a;
+    background-color: rgba(68, 68, 68, 0.85); /* slightly brighter on hover */
 }
 
 .big {
@@ -209,10 +210,10 @@
     }
 }
 
-/* Extra fix so footer button doesn't overlap */
 footer {
     padding-top: 40px;
 }
+
 
 
     
