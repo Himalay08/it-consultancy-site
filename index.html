@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SkyTech — Beautiful, modern, single-page IT services & consultancy based in Bengaluru, Manyata Tech Park." />
-  <meta name="keywords" content="IT services, tech consulting, software development, cloud, AI, Bengaluru, Manyata Tech Park" />
-  <meta property="og:title" content="SkyTech — IT Services & Consultancy" />
-  <meta property="og:description" content="Custom software, cloud solutions, data & AI, and cybersecurity." />
+  <meta name="description" content="LogicLayer — Enterprise-grade Java, Spring Boot, Microservices, Cloud & DevOps consulting based in Bengaluru, Manyata Tech Park." />
+  <meta name="keywords" content="LogicLayer, Java, Spring Boot, Spring Batch, Microservices, Monolithic, React, JavaScript, Kubernetes, Docker, Apache Kafka, Zookeeper, Liquibase, JFrog, New Relic, Consulting, Bengaluru, Manyata Tech Park" />
+  <meta property="og:title" content="LogicLayer — IT Services & Consultancy" />
+  <meta property="og:description" content="Enterprise support for Java, Spring, Cloud, DevOps, Observability & Data Streaming." />
   <meta property="og:type" content="website" />
-  <title>SkyTech — IT Services & Consultancy</title>
+  <title>LogicLayer — IT Services & Consultancy</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
@@ -21,8 +21,12 @@
       --accent-2:#5b9dff; /* blue */
       --ring: rgba(0,173,181,.35);
       --radius:16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --shadow-sm: 0 6px 14px rgba(0,0,0,.25);
+      --shadow: 0 14px 30px rgba(0,0,0,.35);
+      --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
       --container: 1180px;
+      --t: 250ms;         /* animation timing */
+      --t-fast: 150ms;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -30,22 +34,27 @@
     a{color:inherit; text-decoration:none}
     .container{max-width:var(--container); margin-inline:auto; padding:0 24px}
 
-    /* ====== Navbar ====== */
-    .nav{position:sticky; top:0; z-index:1000; backdrop-filter:saturate(140%) blur(6px); background:linear-gradient( to bottom, rgba(11,18,32,.85), rgba(11,18,32,.55)); border-bottom:1px solid rgba(255,255,255,.06)}
+    /* ====== Navbar (pro) ====== */
+    .nav{position:sticky; top:0; z-index:1000; backdrop-filter:saturate(140%) blur(10px); background:linear-gradient( to bottom, rgba(11,18,32,.92), rgba(11,18,32,.6)); border-bottom:1px solid rgba(255,255,255,.06); box-shadow:var(--shadow-sm)}
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .brand{display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.4px}
-    .logo{width:36px; height:36px; border-radius:10px; background:conic-gradient(from 210deg, var(--accent), var(--accent-2)); display:grid; place-items:center; box-shadow:0 6px 18px rgba(0,173,181,.35)}
-    .logo svg{width:22px; height:22px; fill:white}
-    .nav-links{display:flex; gap:22px}
-    .nav-links a{color:var(--muted); font-weight:600}
+    .logo{width:42px; height:42px; border-radius:12px; position:relative; isolation:isolate; display:grid; place-items:center}
+    .logo::before{content:""; position:absolute; inset:-1px; border-radius:inherit; background:conic-gradient(from 210deg, var(--accent), var(--accent-2)); filter:blur(14px); opacity:.45; z-index:-1}
+    .logo svg{width:22px; height:22px; fill:white; filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+    .brand span{font-size:18px}
+    .nav-links{display:flex; gap:24px}
+    .nav-links a{color:var(--muted); font-weight:600; position:relative}
     .nav-links a:hover{color:var(--text)}
+    .nav-links a.active::after{content:""; position:absolute; left:0; right:0; bottom:-10px; height:2px; background:linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius:2px}
     .nav-cta{display:flex; gap:10px}
-    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px; background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.12); font-weight:700}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.03); color:var(--text); border:1px solid rgba(255,255,255,.12); font-weight:700; transition:transform var(--t), box-shadow var(--t), background var(--t), border-color var(--t)}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.35); border-color:rgba(255,255,255,.2)}
     .btn-primary{background:linear-gradient(90deg, var(--accent), var(--accent-2)); border:none; box-shadow:0 8px 24px rgba(0,173,181,.35)}
+    .btn-primary:hover{box-shadow:0 16px 36px rgba(0,173,181,.45);}
 
     /* mobile nav */
     .menu{display:none}
-    .hamburger{display:none; width:40px; height:40px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text)}
+    .hamburger{display:none; width:42px; height:42px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text)}
     @media (max-width:860px){
       .nav-links,.nav-cta{display:none}
       .hamburger{display:inline-grid; place-items:center}
@@ -56,50 +65,65 @@
 
     /* ====== Hero ====== */
     .hero{position:relative; overflow:hidden}
-    .hero-wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; padding:72px 0 56px}
+    .hero-wrap{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; padding:92px 0 68px}
     .kicker{display:inline-block; padding:6px 10px; border-radius:999px; background:rgba(0,173,181,.12); color:var(--accent); font-weight:700; letter-spacing:.3px}
-    .title{font-size: clamp(32px, 5vw, 56px); line-height:1.05; margin:14px 0 12px; font-weight:800}
+    .title{font-size: clamp(36px, 5vw, 60px); line-height:1.05; margin:14px 0 12px; font-weight:800}
     .subtitle{color:var(--muted); font-size: clamp(16px, 2.2vw, 20px)}
     .hero-cta{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:20px; border-radius:var(--radius); box-shadow:var(--shadow)}
+
+    /* Professional card base + hover highlight (glass + glow ring) */
+    .card, .hero-card, .service{position:relative; background:linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:24px; border-radius:var(--radius); box-shadow:var(--shadow); transition:transform var(--t), box-shadow var(--t), border-color var(--t)}
+    .card::after, .hero-card::after, .service::after{content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; background:linear-gradient(120deg, transparent, rgba(0,173,181,.35), rgba(91,157,255,.35), transparent); -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite:xor; mask-composite:exclude; opacity:0; transition:opacity var(--t-fast)}
+    .card:hover, .hero-card:hover, .service:hover{transform:translateY(-8px); box-shadow:var(--shadow-lg); border-color:rgba(255,255,255,.18)}
+    .card:hover::after, .hero-card:hover::after, .service:hover::after{opacity:1}
+
     .metric{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:16px}
-    .metric .pill{background:rgba(255,255,255,.04); padding:12px; border-radius:12px; text-align:center}
+    .metric .pill{background:rgba(255,255,255,.04); padding:12px; border-radius:12px; text-align:center; transition:transform var(--t)}
+    .metric .pill:hover{transform:translateY(-4px)}
     .metric .big{font-size:22px; font-weight:800}
 
-    .blob{position:absolute; right:-120px; top:-120px; width:420px; height:420px; background:radial-gradient(closest-side, rgba(0,173,181,.35), transparent 70%); filter:blur(26px);}
+    /* Increased spacing for quick contact card */
+    .hero-contact{display:flex; flex-direction:column; gap:14px}
+    .hero-contact .btn{justify-content:center}
+
+    .blob{position:absolute; right:-120px; top:-120px; width:460px; height:460px; background:radial-gradient(closest-side, rgba(0,173,181,.35), transparent 70%); filter:blur(26px);}
     @media (max-width:980px){.hero-wrap{grid-template-columns:1fr}}
 
     /* ====== Sections ====== */
-    section{padding:64px 0}
+    section{padding:72px 0}
     .section-title{font-size:clamp(22px,3vw,32px); margin:0 0 14px}
     .section-sub{color:var(--muted); margin-bottom:28px}
 
     /* About */
     .about{display:grid; grid-template-columns:1.1fr .9fr; gap:28px}
-    .about .card{background:var(--surface); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
     .profile{display:flex; gap:16px; align-items:center}
-    .avatar{width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:800}
-
+    .avatar{width:76px; height:76px; border-radius:50%; background:linear-gradient(135deg, var(--accent), var(--accent-2)); display:grid; place-items:center; color:#fff; font-weight:800}
     @media (max-width:980px){.about{grid-template-columns:1fr}}
 
-    /* Services */
-    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+    /* Services grid */
+    .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px}
     @media (max-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}}
     @media (max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:520px){.grid{grid-template-columns:1fr}}
-    .service{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:16px; box-shadow:var(--shadow); transition:transform .3s ease}
-    .service:hover{transform:translateY(-6px)}
-    .service .icon{width:40px; height:40px; border-radius:10px; display:grid; place-items:center; margin-bottom:10px; background:linear-gradient(135deg, rgba(0,173,181,.25), rgba(91,157,255,.25)); border:1px solid rgba(255,255,255,.08)}
+    .service .icon{width:44px; height:44px; border-radius:10px; display:grid; place-items:center; margin-bottom:12px; background:linear-gradient(135deg, rgba(0,173,181,.25), rgba(91,157,255,.25)); border:1px solid rgba(255,255,255,.08); transition:transform var(--t)}
+    .service:hover .icon{transform:scale(1.05)}
     .service h3{margin:6px 0 6px; font-size:18px}
     .service p{color:var(--muted); font-size:14px}
 
+    /* Tech badges */
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+    .badge{padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); font-size:12px; color:var(--muted); transition:transform var(--t)}
+    .badge:hover{transform:translateY(-3px)}
+
     /* Portfolio */
-    .portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .portfolio-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
     @media (max-width:900px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:560px){.portfolio-grid{grid-template-columns:1fr}}
-    .thumb{position:relative; aspect-ratio:16/10; border-radius:14px; overflow:hidden; cursor:pointer; border:1px solid rgba(255,255,255,.08)}
-    .thumb img{width:100%; height:100%; object-fit:cover; filter:saturate(105%)}
-    .thumb::after{content:"View"; position:absolute; inset:auto 10px 10px auto; background:rgba(0,0,0,.5); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px}
+    .thumb{position:relative; aspect-ratio:16/10; border-radius:14px; overflow:hidden; cursor:pointer; border:1px solid rgba(255,255,255,.08); transition:transform var(--t), box-shadow var(--t)}
+    .thumb img{width:100%; height:100%; object-fit:cover; filter:saturate(105%); transition:transform var(--t)}
+    .thumb:hover{transform:translateY(-6px); box-shadow:var(--shadow)}
+    .thumb:hover img{transform:scale(1.04)}
+    .thumb::after{content:"View"; position:absolute; inset:auto 10px 10px auto; background:rgba(0,0,0,.55); color:#fff; padding:6px 10px; border-radius:999px; font-size:12px}
 
     /* Modal */
     .modal{position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; align-items:center; justify-content:center; padding:24px}
@@ -112,19 +136,24 @@
     /* Contact */
     .contact{display:grid; grid-template-columns:1fr 1fr; gap:22px}
     @media (max-width:900px){.contact{grid-template-columns:1fr}}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:16px; box-shadow:var(--shadow)}
     .field{display:flex; flex-direction:column; gap:8px; margin-bottom:14px}
-    .input, textarea{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:12px; padding:12px 14px; outline:none}
+    .input, textarea{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); color:var(--text); border-radius:12px; padding:12px 14px; outline:none; transition:box-shadow var(--t), border-color var(--t)}
     .input:focus, textarea:focus{box-shadow:0 0 0 4px var(--ring); border-color:var(--accent)}
     textarea{min-height:120px; resize:vertical}
 
     /* Footer */
-    footer{padding:40px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
+    footer{padding:44px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.06)}
     .muted{color:var(--muted)}
 
     /* Simple reveal animations */
     .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease}
     .reveal.show{opacity:1; transform:none}
+
+    /* Accessibility */
+    :focus-visible{outline:3px solid var(--accent-2); outline-offset:2px}
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important; animation:none !important}
+    }
   </style>
 </head>
 <body>
@@ -132,12 +161,15 @@
   <div class="nav">
     <div class="container nav-wrap">
       <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M12 3l7.5 4.33v9.34L12 21 4.5 16.67V7.33L12 3z"/></svg>
+        <div class="logo" aria-hidden="true" title="LogicLayer logo">
+          <!-- Polished LL monogram logo -->
+          <svg viewBox="0 0 24 24" role="img" aria-label="LogicLayer">
+            <path d="M4 4h4v12h8v4H4V4zm12 0h4v12h-4z"></path>
+          </svg>
         </div>
-        <span>SkyTech</span>
+        <span>LogicLayer</span>
       </div>
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
@@ -164,28 +196,28 @@
     <div class="blob" aria-hidden="true"></div>
     <div class="container hero-wrap">
       <div>
-        <span class="kicker">IT Services & Consultancy</span>
-        <h1 class="title">Innovating the Future of Technology</h1>
-        <p class="subtitle">We deliver world‑class software, cloud, data & AI solutions that scale with your business.</p>
+        <span class="kicker">Enterprise IT Services & Consultancy</span>
+        <h1 class="title">Build, Scale & Operate with Confidence</h1>
+        <p class="subtitle">Enterprise support across Java, Spring Boot & Batch, Microservices, React, Kubernetes, Docker, Kafka, Zookeeper, Liquibase, JFrog, New Relic and more.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#contact">Get in Touch</a>
           <a class="btn" href="#services">Explore Services</a>
         </div>
         <div class="hero-card">
           <div class="metric">
-            <div class="pill"><div class="big">10+ yrs</div><div class="muted">Experience</div></div>
-            <div class="pill"><div class="big">95%</div><div class="muted">Success Rate</div></div>
-            <div class="pill"><div class="big">50+</div><div class="muted">Global Clients</div></div>
+            <div class="pill"><div class="big">Enterprise</div><div class="muted">Project Support</div></div>
+            <div class="pill"><div class="big">Java • Cloud</div><div class="muted">Deep Expertise</div></div>
+            <div class="pill"><div class="big">SLA</div><div class="muted">Reliable Delivery</div></div>
           </div>
         </div>
       </div>
       <div class="hero-card">
-        <h3 style="margin:0 0 10px">Quick Contact</h3>
+        <h3 style="margin:0 0 14px">Quick Contact</h3>
         <div class="muted">Bengaluru · Manyata Tech Park</div>
-        <div style="margin-top:10px; display:grid; gap:8px">
+        <div class="hero-contact" style="margin-top:16px">
           <a class="btn" href="tel:+918200808935">📞 +91‑8200808935</a>
           <a class="btn" href="https://wa.me/918200808935" target="_blank">💬 WhatsApp</a>
-          <a class="btn" href="mailto:contact@skytechsolutions.com">✉️ Email</a>
+          <a class="btn" href="mailto:contact@logiclayer.com">✉️ contact@logiclayer.com</a>
         </div>
       </div>
     </div>
@@ -195,19 +227,20 @@
   <section id="about">
     <div class="container about">
       <div class="card reveal">
-        <h2 class="section-title">About SkyTech</h2>
-        <p class="section-sub">We help businesses navigate the digital era with secure, scalable and innovative technology.</p>
-        <p>From custom software to cloud migration and AI consulting, our team designs and delivers solutions that accelerate growth and reduce risk.</p>
+        <h2 class="section-title">About LogicLayer</h2>
+        <p class="section-sub">We architect, build and operate mission‑critical systems for enterprises.</p>
+        <p>LogicLayer partners with large organizations to deliver secure, scalable software platforms. Our consulting spans architecture, implementation and ongoing reliability engineering across application, data and infrastructure layers.</p>
       </div>
       <div class="card reveal">
         <div class="profile">
           <div class="avatar" aria-label="Himalay Goyani photo placeholder">HG</div>
           <div>
             <strong style="font-size:18px">Himalay Goyani</strong>
-            <div class="muted">CTO & CEO</div>
+            <div class="muted">Founder, CTO & CEO</div>
           </div>
         </div>
-        <p style="margin-top:12px" class="muted">(Replace avatar with your photo later)</p>
+        <p style="margin-top:12px">Himalay is a hands‑on technology leader specializing in Java, Spring (Boot & Batch), distributed systems and cloud‑native architectures. He guides enterprise teams through modernization, performance tuning and secure, compliant delivery.</p>
+        <p class="muted" style="margin-top:8px">(Replace the avatar with your photo later.)</p>
       </div>
     </div>
   </section>
@@ -216,27 +249,57 @@
   <section id="services">
     <div class="container">
       <h2 class="section-title">Services</h2>
-      <p class="section-sub">End‑to‑end capabilities for modern enterprises.</p>
+      <p class="section-sub">Strategy, engineering and operations for modern stacks.</p>
       <div class="grid">
         <div class="service reveal">
-          <div class="icon">💻</div>
-          <h3>Custom Software Development</h3>
-          <p>Design, build and maintain secure, high‑performance applications tailored to your business.</p>
+          <div class="icon">🧩</div>
+          <h3>Architecture & Delivery</h3>
+          <p>Monolithic & multi‑module systems, microservices, domain‑driven design, CI/CD and release governance.</p>
+          <div class="badges">
+            <span class="badge">Java</span>
+            <span class="badge">Spring Boot</span>
+            <span class="badge">Spring Batch</span>
+          </div>
         </div>
         <div class="service reveal">
           <div class="icon">☁️</div>
-          <h3>Cloud Migration & Management</h3>
-          <p>Plan, migrate and optimize workloads across AWS, Azure or GCP with best practices.</p>
+          <h3>Cloud‑Native Platforms</h3>
+          <p>Kubernetes orchestration, containerization, security hardening and production SRE practices.</p>
+          <div class="badges">
+            <span class="badge">Kubernetes</span>
+            <span class="badge">Docker</span>
+            <span class="badge">Liquibase</span>
+          </div>
         </div>
         <div class="service reveal">
-          <div class="icon">🤖</div>
-          <h3>AI & Data Analytics</h3>
-          <p>Turn data into insights with analytics, ML workflows and AI‑driven automation.</p>
+          <div class="icon">📈</div>
+          <h3>Observability & DevOps</h3>
+          <p>Telemetry, performance tuning and release pipelines with enterprise SLAs.</p>
+          <div class="badges">
+            <span class="badge">New Relic</span>
+            <span class="badge">JFrog</span>
+            <span class="badge">CI/CD</span>
+          </div>
         </div>
         <div class="service reveal">
-          <div class="icon">🛡️</div>
-          <h3>Cybersecurity</h3>
-          <p>Security assessments, hardening, and monitoring to protect your business 24×7.</p>
+          <div class="icon">⚡</div>
+          <h3>Data Streaming & Integrations</h3>
+          <p>Event‑driven architectures and resilient messaging for large‑scale enterprises.</p>
+          <div class="badges">
+            <span class="badge">Apache Kafka</span>
+            <span class="badge">Zookeeper</span>
+            <span class="badge">REST/GraphQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card reveal" style="margin-top:20px">
+        <strong>Front‑end Delivery</strong>
+        <p class="muted" style="margin:6px 0 0">Modern web apps with clean UX and performance budgets.</p>
+        <div class="badges">
+          <span class="badge">React</span>
+          <span class="badge">JavaScript</span>
+          <span class="badge">TypeScript</span>
         </div>
       </div>
     </div>
@@ -307,7 +370,7 @@
 
   <footer>
     <div class="container" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between">
-      <div>© <span id="year"></span> SkyTech. All rights reserved.</div>
+      <div>© <span id="year"></span> LogicLayer. All rights reserved.</div>
       <div class="muted">Follow: 
         <a href="#" aria-label="LinkedIn" class="btn" style="padding:6px 10px">in</a>
         <a href="#" aria-label="Twitter" class="btn" style="padding:6px 10px">X</a>
@@ -365,6 +428,18 @@
     });
     modalClose.addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
     modal.addEventListener('click', (e)=>{ if(e.target===modal){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); } });
+
+    // Active link highlighting by section in view
+    const links = [...document.querySelectorAll('#navLinks a')];
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const highlight = new IntersectionObserver((entries)=>{
+      entries.forEach(entry => {
+        const id = '#' + entry.target.id;
+        const link = links.find(l => l.getAttribute('href') === id);
+        if(link){ link.classList.toggle('active', entry.isIntersecting && entry.intersectionRatio > 0.5); }
+      });
+    }, {threshold:[0.55]});
+    sections.forEach(s => highlight.observe(s));
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
