@@ -31,7 +31,7 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
+        <!-- <a href="#portfolio">Portfolio</a> -->
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-cta">
@@ -84,7 +84,7 @@
   <!-- ======= ABOUT ======= -->
   <section id="about">
     <div class="container about">
-      <div class="card reveal">
+      <div class="hero-card">
         <h2 class="section-title">About LogicLayer</h2>
         <p class="section-sub">We architect, build, and operate mission-critical systems for modern enterprises.</p>
 
@@ -96,7 +96,7 @@
 
 <p class="section-sub">At LogicLayer, our mission is simple: to empower businesses with robust, future-proof technology that drives innovation, enhances efficiency, and scales with growth.</p>
       </div>
-      <div class="card reveal">
+      <div class="hero-card">
         <div class="profile">
           <div class="avatar" aria-label="Himalay Goyani photo placeholder">HG</div>
           <div>
@@ -117,40 +117,40 @@
       <h2 class="section-title">Services</h2>
       <p class="section-sub">Strategy, engineering and operations for modern stacks.</p>
       <div class="grid">
-        <div class="service reveal">
+        <div class="hero-card">
           <div class="icon">🧩</div>
           <h3>Architecture & Delivery</h3>
-          <p>Monolithic & multi‑module systems, microservices, domain‑driven design, CI/CD and release governance.</p>
+          <p class="section-sub">Monolithic & multi‑module systems, microservices, domain‑driven design, CI/CD and release governance.</p>
           <div class="badges">
             <span class="badge">Java</span>
             <span class="badge">Spring Boot</span>
             <span class="badge">Spring Batch</span>
           </div>
         </div>
-        <div class="service reveal">
+        <div class="hero-card">
           <div class="icon">☁️</div>
           <h3>Cloud‑Native Platforms</h3>
-          <p>Kubernetes orchestration, containerization, security hardening and production SRE practices.</p>
+          <p class="section-sub">Kubernetes orchestration, containerization, security hardening and production SRE practices.</p>
           <div class="badges">
             <span class="badge">Kubernetes</span>
             <span class="badge">Docker</span>
             <span class="badge">Liquibase</span>
           </div>
         </div>
-        <div class="service reveal">
+        <div class="hero-card">
           <div class="icon">📈</div>
           <h3>Observability & DevOps</h3>
-          <p>Telemetry, performance tuning and release pipelines with enterprise SLAs.</p>
+          <p class="section-sub">Telemetry, performance tuning and release pipelines with enterprise SLAs.</p>
           <div class="badges">
             <span class="badge">New Relic</span>
             <span class="badge">JFrog</span>
             <span class="badge">CI/CD</span>
           </div>
         </div>
-        <div class="service reveal">
+        <div class="hero-card">
           <div class="icon">⚡</div>
           <h3>Data Streaming & Integrations</h3>
-          <p>Event‑driven architectures and resilient messaging for large‑scale enterprises.</p>
+          <p class="section-sub">Event‑driven architectures and resilient messaging for large‑scale enterprises.</p>
           <div class="badges">
             <span class="badge">Apache Kafka</span>
             <span class="badge">Zookeeper</span>
@@ -159,7 +159,7 @@
         </div>
       </div>
 
-      <div class="card reveal" style="margin-top:20px">
+      <div class="hero-card" style="margin-top:20px">
         <strong>Front‑end Delivery</strong>
         <p class="muted" style="margin:6px 0 0">Modern web apps with clean UX and performance budgets.</p>
         <div class="badges">
@@ -170,14 +170,12 @@
       </div>
     </div>
   </section>
-
-  <!-- ======= PORTFOLIO ======= -->
-  <section id="portfolio">
+  <!-- <section id="portfolio">
     <div class="container">
       <h2 class="section-title">Portfolio</h2>
       <p class="section-sub">Selected work from recent engagements.</p>
       <div class="portfolio-grid">
-        <!-- Placeholder thumbnails; replace src with your images -->
+      
         <figure class="thumb reveal" data-title="Enterprise Dashboard" data-desc="A scalable analytics platform with role‑based access and real‑time charts." data-img="https://images.unsplash.com/photo-1551281043-8d8d2aaae8e9?q=80&w=1600&auto=format&fit=crop">
           <img alt="Project 1" src="https://images.unsplash.com/photo-1551281043-8d8d2aaae8e9?q=80&w=800&auto=format&fit=crop"/>
         </figure>
@@ -198,12 +196,12 @@
         </figure>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ======= CONTACT ======= -->
   <section id="contact">
     <div class="container contact">
-      <div class="card reveal">
+      <div class="hero-card">
         <h2 class="section-title">Contact</h2>
         <p class="section-sub">We usually respond within 24 hours.</p>
         <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll get back to you soon.');">
@@ -222,7 +220,7 @@
           <button class="btn btn-primary" type="submit">Send Message</button>
         </form>
       </div>
-      <div class="card reveal">
+      <div class="hero-card">
         <h3 style="margin-top:0">Bengaluru Office</h3>
         <p class="muted">Manyata Tech Park, Bengaluru</p>
         <p><a class="btn" href="tel:+918200808935">📞 +91‑8200808935</a></p>
@@ -238,9 +236,9 @@
     <div class="container" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between">
       <div>© <span id="year"></span> LogicLayer. All rights reserved.</div>
       <div class="muted">Follow: 
-        <a href="#" aria-label="LinkedIn" class="btn" style="padding:6px 10px">in</a>
-        <a href="#" aria-label="Twitter" class="btn" style="padding:6px 10px">X</a>
-        <a href="#" aria-label="GitHub" class="btn" style="padding:6px 10px">GH</a>
+        <a href="https://www.linkedin.com/in/goyani-himalay-376716135/" aria-label="LinkedIn" class="btn" style="padding:6px 10px">in</a>
+        <a href="https://x.com/hpgoyani08" aria-label="Twitter" class="btn" style="padding:6px 10px">X</a>
+        <a href="https://github.com/Himalay08" aria-label="GitHub" class="btn" style="padding:6px 10px">GH</a>
       </div>
     </div>
   </footer>
@@ -262,13 +260,13 @@
   <script>
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if(hamburger){
-      hamburger.addEventListener('click', ()=>{
-        const hidden = mobileMenu.hasAttribute('hidden');
-        if(hidden) mobileMenu.removeAttribute('hidden'); else mobileMenu.setAttribute('hidden','');
-      });
-    }
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
+}
 
     // Reveal on scroll
     const io = new IntersectionObserver(entries => {
